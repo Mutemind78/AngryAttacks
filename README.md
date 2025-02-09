@@ -87,7 +87,7 @@
   - Plane, birds, and bullet images are custom or sourced from free resources.
   - Background image (`sky.png`) is from [Unsplash](https://unsplash.com/).
 
-- **Developed by:** [Your Name]
+- **Developed by:** HARSH PATEL
 
 ---
 
