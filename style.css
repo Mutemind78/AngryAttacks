@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/Assets/sky2.png');
+    font-family: Arial, sans-serif;
+}
+
+#game-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-image: url('/Assets/sky.png'); /* Use your sky.png as the background */
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+#plane {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    bottom: 250px;
+    left: 100px;
+    transition: top 0.1s, left 0.1s;
+}
+
+.bird {
+    position: absolute;
+    width: 50px;
+    height: auto;
+}
+
+.bullet {
+    position: absolute;
+    width: 10px;
+    height: auto;
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better visibility */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#start-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: #45a049;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    display: none;
+}
+
+#play-again {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#play-again:hover {
+    background-color: #45a049;
+}
