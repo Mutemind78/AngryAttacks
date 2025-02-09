@@ -16,18 +16,21 @@ body {
 
 #game-container {
     position: relative;
-    width: 400px;
-    height: 600px;
-    background-image: url('/Assets/sky.png'); /* Use your sky.png as the background */
-    background-size: cover; /* Ensures the image covers the entire container */
-    background-position: center; /* Centers the image */
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Maximum width */
+    height: 80vh; /* Responsive height */
+    max-height: 600px; /* Maximum height */
+    background-image: url('/Assets/sky.png');
+    background-size: cover;
+    background-position: center;
     border: 2px solid black;
     overflow: hidden;
 }
 
 #plane {
     position: absolute;
-    width: 100px;
+    width: 20%; /* Responsive width */
+    max-width: 100px; /* Maximum width */
     height: auto;
     bottom: 250px;
     left: 100px;
@@ -36,13 +39,15 @@ body {
 
 .bird {
     position: absolute;
-    width: 50px;
+    width: 10%; /* Responsive width */
+    max-width: 50px; /* Maximum width */
     height: auto;
 }
 
 .bullet {
     position: absolute;
-    width: 10px;
+    width: 2%; /* Responsive width */
+    max-width: 10px; /* Maximum width */
     height: auto;
 }
 
@@ -53,7 +58,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: white;
-    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better visibility */
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
     border-radius: 5px;
 }

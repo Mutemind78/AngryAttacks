@@ -16,12 +16,60 @@ let bullets = [];
 let birds = [];
 const birdImages = ["black.png", "blue.png", "red.png", "white.png", "yellow.png"];
 
+let touchStartX = 0;
+let touchStartY = 0;
+let isTouching = false;
+
+// Keyboard event listeners
 document.addEventListener("keydown", (event) => {
     keys[event.key] = true;
 });
 
 document.addEventListener("keyup", (event) => {
     keys[event.key] = false;
+});
+
+// Touch event listeners for the game container
+const gameContainer = document.getElementById("game-container");
+
+gameContainer.addEventListener("touchstart", (event) => {
+    event.preventDefault();
+    const touch = event.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    isTouching = true;
+});
+
+gameContainer.addEventListener("touchmove", (event) => {
+    event.preventDefault();
+    if (isTouching) {
+        const touch = event.touches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+
+        // Move the plane based on touch movement
+        planeX += deltaX / 5; // Adjust sensitivity
+        planeY += deltaY / 5;
+
+        // Update touch start position for smooth movement
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+
+        // Keep plane within boundaries
+        if (planeX < 0) planeX = 0;
+        if (planeX > 350) planeX = 350;
+        if (planeY < 0) planeY = 0;
+        if (planeY > 550) planeY = 550;
+
+        plane.style.left = planeX + "px";
+        plane.style.top = planeY + "px";
+    }
+});
+
+gameContainer.addEventListener("touchend", (event) => {
+    event.preventDefault();
+    isTouching = false;
+    createBullet(); // Shoot bullet when touch ends
 });
 
 startButton.addEventListener("click", () => {
@@ -113,7 +161,7 @@ function checkCollision(rect1, rect2) {
 function gameLoop() {
     if (!gameActive) return;
 
-    // Move plane
+    // Move plane with keyboard (optional)
     if (keys["ArrowUp"] || keys["w"]) planeY -= speed;
     if (keys["ArrowDown"] || keys["s"]) planeY += speed;
     if (keys["ArrowLeft"] || keys["a"]) planeX -= speed;
@@ -203,7 +251,7 @@ function gameLoop() {
         }
     });
 
-    // Shoot bullet on spacebar press
+    // Shoot bullet on spacebar press (optional)
     if (keys[" "]) {
         createBullet();
         keys[" "] = false; // Prevent continuous shooting
